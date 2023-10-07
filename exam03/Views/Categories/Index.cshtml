@@ -1,0 +1,15 @@
+﻿@model IEnumerable<exam03.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="row">
+    <div class="col">
+        <h3 class="display-4 text-center">Field List</h3>
+        @Html.Partial("_CategoryList", Model)
+
+    </div>
+</div>

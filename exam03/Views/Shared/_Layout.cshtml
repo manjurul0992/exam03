@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.1.js"></script>
+    @RenderSection("style", required: false)
+</head>
+<body>
+    <div class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            @Html.ActionLink("Game", "Index", "Games", new { }, new { @class = "fw-bold fs-1 nav-link" })
+            @Html.ActionLink("Category", "Index", "Categories", new { }, new { @class = "fw-bold fs-1 nav-link" })
+        </div>
+
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer class="text-center">
+        <p>&copy;@DateTime.Now.Year---Manjurul islam</p>
+    </footer>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

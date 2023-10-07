@@ -1,0 +1,108 @@
+﻿@model exam03.Models.GameVM.GameVM
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="row">
+    <div class="col">
+        @using (Html.BeginForm("Edit", "Games", FormMethod.Post, new { @class = "form-horizoltal", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            <h2 class="display-4 text-center">Edit</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.PicturePath)
+
+
+            <div class="form-group row">
+                @Html.LabelFor(x => x.GameName, htmlAttributes: new { @class = "col-form-label col-2" })
+
+                <div class="col-6">
+                    @Html.EditorFor(x => x.GameName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.GameName, "", new { @class = "form-danger" })
+                </div>
+            </div>
+            <div class="form-group row mt-3">
+                @Html.LabelFor(x => x.Prize, htmlAttributes: new { @class = "col-form-label col-2" })
+
+                <div class="col-6">
+                    @Html.EditorFor(x => x.Prize, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.Prize, "", new { @class = "form-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group row mt-3">
+                @Html.LabelFor(x => x.CId, htmlAttributes: new { @class = "col-form-label col-2" })
+
+                <div class="col-6">
+                    @Html.DropDownListFor(x => x.CId, ViewBag.categories as SelectList, "----SELECT----", new { @class = "form-select" })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.CId, "", new { @class = "form-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row mt-3">
+                @Html.LabelFor(x => x.PlayDate, htmlAttributes: new { @class = "col-form-label col-2" })
+
+                <div class="col-6">
+                    @Html.EditorFor(x => x.PlayDate, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.PlayDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group row mt-3">
+                @Html.LabelFor(x => x.Picture, htmlAttributes: new { @class = "col-form-label col-2" })
+
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", Type = "file" })
+                    <p class="border mt-2"> <b>Picture Path : </b> @Path.GetFullPath(Model.PicturePath)</p>
+            <img src="@Url.Content(Model.PicturePath)" width="32" height="32" />
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "form-danger" })
+                </div>
+            </div>
+
+            
+
+
+
+
+
+            <div class="form-group row mt-3">
+                @Html.LabelFor(x => x.Result, htmlAttributes: new { @class = "col-form-label col-2" })
+
+                <div class="col-6">
+                    @Html.CheckBoxFor(x => x.Result, new { @class = "form-check-input" })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.Result, "", new { @class = "form-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn btn-outline-primary" id="btnCreate"><i class="fa fa-save"></i>Save</button>
+                    <button type="reset" class="btn btn-outline-warning" id="btnReset"><i class="fa fa-undo"></i>Reset</button>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

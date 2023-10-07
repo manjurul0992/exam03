@@ -1,0 +1,21 @@
+﻿@model IEnumerable<exam03.Models.Category>
+<p class="d-flex justify-content-end">
+    @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(x => x.CName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CName)
+            </td>
+        </tr>
+    }
+
+</table>

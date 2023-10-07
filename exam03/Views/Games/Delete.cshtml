@@ -1,0 +1,72 @@
+﻿@model exam03.Models.Game
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h4 class="alert alert-danger mt-4">Are you sure you want to delete this @Model.GameName?</h4>
+<div class="row">
+    <div class="col">
+        <dl class="dl-horizontal col-6 border">
+            <dt>
+                @Html.DisplayNameFor(x => x.GameName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.GameName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(x => x.Prize)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Prize)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(x => x.PlayDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.PlayDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(x => x.Result)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Result)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(x => x.PicturePath)
+            </dt>
+
+            <dd>
+               <img src="@Url.Content(Model.PicturePath)" width="40" height="40" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(x => x.Category.CName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(x => x.Category.CName)
+            </dd>
+
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index",new { }, new {@class="btn btn-primary"})
+        </div>
+    }
+</div>

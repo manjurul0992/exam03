@@ -1,0 +1,51 @@
+﻿@model IEnumerable<exam03.Models.Game>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="display-4">Game List</h2>
+        <div class="d-flex justify-content-end">
+            <a href="@Url.Action("Create","Games")" class="btn btn-primary mb-4">Add New Game</a>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Game Name</th>
+                    <th>Prize Money</th>
+                    <th>Category</th>
+                    <th>Playing Date</th>
+
+                    <th>Result</th>
+                    <th> Picture</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.GameName)</td>
+                        <td>
+                            @Html.DisplayFor(x => item.Prize)
+                        </td>
+                        <td>@Html.DisplayFor(x => item.Category.CName)</td>
+                        <td>@Html.DisplayFor(x => item.PlayDate)</td>
+
+                        <td>@Html.DisplayFor(x => item.Result)</td>
+                        <td>
+                            <img src="@Url.Content(item.PicturePath)" height="40" width="40" />
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Games", new {Id=item.Id})" class="btn btn-outline-primary"><i class="fa fa-edit"></i>Edit</a>
+                            <a href="@Url.Action("Delete", "Games", new {Id=item.Id})" class="btn btn-outline-primary"><i class="fa fa-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
